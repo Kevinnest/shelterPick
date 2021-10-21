@@ -1,0 +1,31 @@
+#main{
+	width: 1200pt;
+	height: 500pt;
+}
+
+#container{
+	width: 550pt;
+	height: 450pt;
+	float: left;
+}  
+
+#panel{
+	width: 400pt;
+	height: 400pt;
+	float: left;
+  	padding-left: 10pt;
+ 	padding-top: 10pt;
+ }
+
+.input-group{
+	width: 200pt;
+}
+
+.btn-group{
+	margin-top: 10pt;
+	margin-bottom: 10pt;
+}
+
+.btn{
+	width: 100pt;
+}

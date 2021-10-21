@@ -1,0 +1,49 @@
+#main{
+	width: 1200pt;
+	height: 500pt;
+}
+
+#container{
+	width: 550pt;
+	height: 450pt;
+	float: left;
+}  
+
+#panel{
+	width: 400pt;
+	height: 400pt;
+	float: left;
+  	padding-left: 10pt;
+ 	padding-top: 10pt;
+ }
+
+.input-group {
+	width: 264pt;
+}
+
+.input-group-addon {
+	width: 100pt;
+}
+
+
+#txtShelters{
+	margin-bottom: 10pt;
+}
+
+.btn-group{
+	margin-bottom: 10pt;
+}
+
+#btn1{
+	margin-top: 10pt;
+}
+
+#lab1{
+	margin-top: 10pt;
+}
+
+#result{
+	width: 400pt;
+	height: 400pt;
+	margin-top: 10pt;
+}
