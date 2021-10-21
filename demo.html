@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>demo</title>
+
+<script type = "text/javascript" src = "http://api.map.baidu.com/api?v=2.0&ak=91a73a33c8964682fdba3f89dc96f279"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/TrafficControl_min.css" >
+<link rel="stylesheet" type="text/css" href="css/demo.css"/>
+<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+<script type = "text/javascript" src = "js/shelterLocation.js"></script>
+<script type = "text/javascript" src = "js/walk.js"></script>
+<script type = "text/javascript" src = "js/evacuation.js"></script>
+<script type = "text/javascript" src = "js/basic.js"></script>
+<script type = "text/javascript" src = "js/trafficControl.js"></script>  
+<script type = "text/javascript">
+
+</script>
+</head>
+
+<body>
+	<div id = "main">
+		<div id = "container"></div> 
+		<div id = "panel">
+			<div class="input-group">
+			    <span class="input-group-addon">疏散点坐标：</span>
+			    <input type="text" class="form-control" id = "txtDangerPoint" value = "114.339654, 30.514296" 
+			    placeholder="坐标以逗号隔开" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group">
+			    <span class="input-group-addon">疏散人数：&nbsp&nbsp&nbsp</span>
+			    <input type="text" class="form-control" id = "txtPeopleInDangerNum" value = "1000" aria-describedby="basic-addon1">
+			</div>
+			<label id = "lab1">备选场所信息：</label>
+			<textarea id = "txtShelters" class="form-control" rows = "10" cols="75" 
+			placeholder="场所信息以场所名称、地理坐标的精度、纬度、可用有效面积、距疏散点的直线距离的顺序列出，用制表符隔开。每条信息用回车隔开">
+武汉理工大学(鉴湖校区)	114.345926	30.518659	10.41	0.78
+武汉科大洪山校区	114.346831	30.522152	8.34	1.11
+湖北工业大学马房山校区	114.350805	30.524524	1.55	1.56
+武昌区晒湖小学	114.326919	30.525465	0.21	1.44
+武昌区南湖第一小学(北校区)	114.330886	30.517353	0.57	0.91
+湖北宏程职业培训学校	114.343855	30.521094	0.33	0.86
+刘勇国际健身会羽毛球运动中心	114.327918	30.519569	0.50	1.27
+洪山区文体中心	114.335573	30.509862	6.67	0.63
+武汉理工大学-体育馆	114.336058	30.511721	1.27	1.15
+南湖体育跑道及足球场	114.336174	30.514343	2.45	0.33</textarea>
+			<div class="btn-group" role="group" >
+				<input type="button" class="btn btn-info" value="读取数据" onclick="showData()">  
+			    <input type="button" class="btn btn-info" value="筛选场所" onclick="pickShelter()">  
+			    <input type="button" class="btn btn-info" value="获取步行路线" onclick="getWalkRoute()" > 
+			    <input type="button" class="btn btn-danger" value="清除标记" onclick="clearOverlays()" > 
+			</div>
+			<div class="input-group">
+			    <span class="input-group-addon">各路线容量：</span>
+			    <input type="text" id = "txtRoadSize" class="form-control" value = "123 453 213 323" 
+				placeholder="各道路容量以空格隔开" aria-describedby="basic-addon1">
+			</div>
+			<input type="button" id = "btn1" class="btn btn-info" value="录入道路容量后，计算疏散策略" onclick="evacuation()" >
+			<label id = "result"></label>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	var map = new BMap.Map('container');
+	map.centerAndZoom(new BMap.Point(114.339654, 30.514296), 12);
+	map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+	map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+	map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+	map.addControl(new BMap.MapTypeControl());
+	map.enableScrollWheelZoom();
+	var ctrl = new BMapLib.TrafficControl({
+			showPanel: false
+		}); 
+	map.addControl(ctrl);
+		ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);  
+</script>
+</body>
+</html>

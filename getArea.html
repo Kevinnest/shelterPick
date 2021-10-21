@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>计算场所面积</title>
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style>
+<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=91a73a33c8964682fdba3f89dc96f279"></script>
+<script type="text/javascript" src="js/DrawingManager_min.js"></script>
+<script type="text/javascript" src="js/getArea.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+<link rel="stylesheet" href="css/DrawingManager_min.css" />
+</head>
+ 
+<body>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">地名关键词</span>
+                <input type="text" class="form-control" id = "txtAim" value = "学校">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="search()">搜索</button>
+                    <button class="btn btn-default" type="button" onclick="newDrawingManager()">划定区域</button>
+                    <button class="btn btn-default" type="button" onclick="clearOverlays()">清除标记</button>
+                    <button class="btn btn-default" type="button" onclick="redirect()">筛选备选场所</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="container"></div> 
+
+    <script type="text/javascript">
+    var map = new BMap.Map('container');
+    map.centerAndZoom(new BMap.Point(114.339654, 30.514296), 12);
+    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+    map.addControl(new BMap.MapTypeControl());
+    map.enableScrollWheelZoom();
+    </script>
+</body>
+</html>
